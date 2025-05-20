@@ -25,12 +25,17 @@
                             <a href="https://github.com/cbabbage0991" id="github"><i class="fab fa-github"></i></a>
                         </div>
 
-                        <div ref="recaptchaContainer"></div>
-
-                        <button v-if="recaptchaToken" type="submit" class="submit-btn pl-5 pr-5" :disabled="isLoading">       
+                        
+                        <button type="submit" class="submit-btn pl-5 pr-5" :disabled="isLoading">       
                             {{isLoading ? "Sending..." : "Submit"}}
                         </button>
                     </div>
+
+                    <!-- recaptcha checkbox -->
+                    <div class="d-flex justify-content-end mt-2">
+                        <div ref="recaptchaContainer"></div>
+                    </div>
+
                 </form>
                 
             </div>
@@ -153,7 +158,7 @@ function renderRecaptcha() {
 
   recaptchaWidgetId.value = window.grecaptcha.render(recaptchaContainer.value, {
     sitekey: SITE_KEY,
-    size: 'compact', // or 'normal'
+    size: 'normal', // or 'compact'
     callback: onRecaptchaSuccess,
     'expired-callback': onRecaptchaExpired,
   });
