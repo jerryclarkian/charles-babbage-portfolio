@@ -27,7 +27,7 @@
 
                         <div ref="recaptchaContainer"></div>
 
-                        <button v-if="!recaptchaToken" type="submit" class="submit-btn pl-5 pr-5" :disabled="isLoading">       
+                        <button v-if="recaptchaToken" type="submit" class="submit-btn pl-5 pr-5" :disabled="isLoading">       
                             {{isLoading ? "Sending..." : "Submit"}}
                         </button>
                     </div>
@@ -153,7 +153,7 @@ function renderRecaptcha() {
 
   recaptchaWidgetId.value = window.grecaptcha.render(recaptchaContainer.value, {
     sitekey: SITE_KEY,
-    size: 'normal', // or 'compact'
+    size: 'compact', // or 'normal'
     callback: onRecaptchaSuccess,
     'expired-callback': onRecaptchaExpired,
   });
